@@ -2,7 +2,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
 
-[node name="Lever" type="Area2D"]
+[node name="Lever" type="RigidBody2D"]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")

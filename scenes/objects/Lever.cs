@@ -24,6 +24,10 @@ public partial class Lever : StaticBody2D
 		{
 			activationArea = area2D;
 		}
+		if(enabled)
+		{
+			Toggle(true)
+		}
 		
 	}
 

@@ -6,7 +6,8 @@ public partial class Player : CharacterBody2D
 	[Export] int speed = 200;
 	public Vector2 velocity;
     Node2D TileDetect;
-    TileMapLayer tileMap;
+    TileMapLayer floorTileMap;
+    TileMapLayer ceilingTileMap;
     AnimatedSprite2D sprite;
     CollisionShape2D collisionShape;
 
@@ -30,7 +31,7 @@ public partial class Player : CharacterBody2D
     // Detects if the player is on an ice tile
     void Detected()
     {   
-        if(tileMap.GetCellAtlasCoords((Vector2I)tileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))
+        if(floorTileMap.GetCellAtlasCoords((Vector2I)floorTileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))
             slide = true;
         else slide = false;
     }
@@ -45,7 +46,8 @@ public partial class Player : CharacterBody2D
 	// Called on run
 	public override void _Ready()
 	{
-        tileMap = GetParent().GetNode<TileMapLayer>("tiles");
+        floorTileMap = GetParent().GetNode<TileMapLayer>("Floor");
+        ceilingTileMap = GetParent().GetNode<TileMapLayer>("Ceiling");
         TileDetect = GetNode<Node2D>("Detect");
         sprite = GetNode<AnimatedSprite2D>("pSprite");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");

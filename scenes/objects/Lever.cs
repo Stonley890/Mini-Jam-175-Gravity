@@ -4,7 +4,8 @@ using System;
 public partial class Lever : RigidBody2D
 {
 
-	[Export] boolean enabled = false;
+	[Export] bool enabled = false;
+	private AnimatedSprite2D _animatedSprite2D;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -22,13 +23,12 @@ public partial class Lever : RigidBody2D
 		enabled = state;
 		// Get AnimatedSprite2D
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		var frame = 0;
 		if (enabled)
 		{
-			_animatedSprite2D.frame = 1;
+			frame = 1;
 		}
-		else
-		{
-			_animatedSprite2D.frame = 0;
-		}
+		_animatedSprite2D.SetFrame(frame);
+		
 	}
 }

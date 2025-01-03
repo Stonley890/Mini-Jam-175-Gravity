@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnbtt7qnc1kof"]
+[gd_scene load_steps=4 format=3 uid="uid://cnbtt7qnc1kof"]
+
+[ext_resource type="Script" path="res://scenes/objects/Door.cs" id="1_3xsbb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
 
@@ -7,6 +9,7 @@
 [node name="Door" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 5
+script = ExtResource("1_3xsbb")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")

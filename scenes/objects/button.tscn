@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddtghwkgn6uo8"]
+[gd_scene load_steps=3 format=3 uid="uid://ddtghwkgn6uo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64ddt"]
 
 [node name="Button" type="RigidBody2D"]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_64ddt")

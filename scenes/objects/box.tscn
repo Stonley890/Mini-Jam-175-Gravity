@@ -1,10 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://bcv06muxc5krk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
+size = Vector2(16, 16)
 
 [node name="Box" type="Area2D"]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")
 
-[node name="MeshInstance" type="MeshInstance2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]

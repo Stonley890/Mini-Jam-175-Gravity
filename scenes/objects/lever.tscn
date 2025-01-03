@@ -7,4 +7,4 @@
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")
 
-[node name="MeshInstance" type="MeshInstance2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]

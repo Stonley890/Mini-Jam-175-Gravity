@@ -9,7 +9,7 @@ public partial class Box : StaticBody2D
 	// Allows player to interact with the box through the use of an area2d
 	public void PlayerEnter(Player p)
 	{
-		velocity += p.velocity.Normalized() * Maxspeed;	
+		velocity += p.velocity.Normalized() * Maxspeed;
 	}
 
 	// Called when the node enters the scene tree for the first time.

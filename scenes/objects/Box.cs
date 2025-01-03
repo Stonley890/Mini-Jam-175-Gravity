@@ -4,20 +4,12 @@ using System;
 public partial class Box : StaticBody2D
 {
 	Vector2 velocity;
-<<<<<<< HEAD
 	float Maxspeed = 250;
-=======
-	float Maxspeed = 50;
->>>>>>> d5eacad520e86e7a4a161d458ea117bac929aab0
 
 	// Allows player to interact with the box through the use of an area2d
 	public void PlayerEnter(Player p)
 	{
-<<<<<<< HEAD
-		velocity += p.velocity.Normalized() * Maxspeed;	
-=======
-		velocity += p.velocity;	
->>>>>>> d5eacad520e86e7a4a161d458ea117bac929aab0
+		velocity += p.velocity.Normalized() * Maxspeed;
 	}
 
 	// Called when the node enters the scene tree for the first time.

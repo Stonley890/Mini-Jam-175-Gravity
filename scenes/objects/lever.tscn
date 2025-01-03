@@ -5,6 +5,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxs8h"]
 
 [node name="Lever" type="RigidBody2D"]
+collision_layer = 2
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")

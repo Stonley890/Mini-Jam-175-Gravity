@@ -11,6 +11,7 @@ region = Rect2(112.908, -0.324415, 14.3703, 16.7258)
 size = Vector2(7, 16)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 14
 script = ExtResource("1_u8vxg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

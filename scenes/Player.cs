@@ -7,15 +7,27 @@ public partial class Player : CharacterBody2D
 	Vector2 velocity;
     Node2D TileDetect;
     TileMapLayer tileMap;
+    AnimatedSprite2D sprite;
     bool slide = false;
 
-    public void Detected()
+    void playAnim()
+    {
+        if(velocity.X != 0  && velocity.Y == 0)
+        {
+            sprite.Play("Run");
+            sprite.FlipH = velocity.X > 0;
+        }
+        else if(velocity.Y < 0)
+            sprite.Play("Back Run");
+        else if(velocity.Y > 0)
+            sprite.Play("Run");
+        else sprite.Play("Idle");
+    }
+
+    void Detected()
     {   
         if(tileMap.GetCellAtlasCoords((Vector2I)tileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))
-        {
-            GD.Print("Ice Detected");
             slide = true;
-        }
         else slide = false;
     }
 
@@ -31,6 +43,7 @@ public partial class Player : CharacterBody2D
 	{
         tileMap = GetParent().GetNode<TileMapLayer>("tiles");
         TileDetect = GetNode<Node2D>("Detect");
+        sprite = GetNode<AnimatedSprite2D>("pSprite");
 	}
 
 	// Called every frame.
@@ -38,6 +51,7 @@ public partial class Player : CharacterBody2D
 	{
 		GetInput();
         Detected();
+        playAnim();
 		MoveAndCollide(velocity * (float)delta);
 	}
 }

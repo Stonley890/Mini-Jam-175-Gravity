@@ -4,22 +4,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3pydj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpodl"]
 atlas = ExtResource("2_s3dge")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(0, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqgpj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu4g1"]
 atlas = ExtResource("2_s3dge")
-region = Rect2(0, 64, 16, 16)
+region = Rect2(16, 96, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j0y1x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3pydj")
+"texture": SubResource("AtlasTexture_hpodl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uqgpj")
+"texture": SubResource("AtlasTexture_vu4g1")
 }],
 "loop": true,
 "name": &"default",

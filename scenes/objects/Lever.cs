@@ -4,7 +4,15 @@ using System;
 public partial class Lever : RigidBody2D
 {
 
+	// whether the lever is enabled. controlled via toggle(bool state)
 	[Export] bool enabled = false;
+	// the control group of the lever. all levers in the same control group should
+	// share the state of the lever.
+	[Export] int controlGroup = 0;
+
+	[Signal]
+	public delegate void LeverStateChangedEventHandler(bool state, int controlGroup);
+
 	private AnimatedSprite2D _animatedSprite2D;
 
 	// Called when the node enters the scene tree for the first time.
@@ -18,7 +26,7 @@ public partial class Lever : RigidBody2D
 	}
 
 	// Toggle lever on and off
-	public void toggle(bool state)
+	public void Toggle(bool state)
 	{
 		enabled = state;
 		// Get AnimatedSprite2D
@@ -30,5 +38,16 @@ public partial class Lever : RigidBody2D
 		}
 		_animatedSprite2D.SetFrame(frame);
 		
+		EmitSignal(SignalName.LeverStateChanged, enabled, controlGroup);
+	}
+
+	// TODO: I'm not actually sure if this will work across multiple levers in a stage.
+	// This may need more work.
+	private void OnLeverStateChanged(bool state, int controlGroup)
+	{
+		if (this.controlGroup == controlGroup)
+		{
+			this.enabled = state;
+		}
 	}
 }

@@ -5,13 +5,13 @@ public partial class Player : CharacterBody2D
 { 
 	[Export] int speed = 200;
 	Vector2 velocity;
-    RayCast2D TileDetect;
+    Node2D TileDetect;
     TileMapLayer tileMap;
     bool slide = false;
 
     public void Detected()
     {   
-        if(tileMap.GetCellAtlasCoords((Vector2I)tileMap.LocalToMap(Position)) == new  Vector2I(0,2))
+        if(tileMap.GetCellAtlasCoords((Vector2I)tileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))
         {
             GD.Print("Ice Detected");
             slide = true;
@@ -30,7 +30,7 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
         tileMap = GetParent().GetNode<TileMapLayer>("tiles");
-        TileDetect = GetNode<RayCast2D>("TileDetect");
+        TileDetect = GetNode<Node2D>("Detect");
 	}
 
 	// Called every frame.

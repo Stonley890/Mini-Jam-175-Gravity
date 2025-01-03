@@ -1,6 +1,10 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini Jam 175- Gravity", "Mini Jam 175- Gravity.csproj", "{C9CBA3B8-21EC-44F3-93DF-A1A384C1D4D2}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini Jam 175- Gravity", "Mini Jam 175- Gravity.csproj", "{DAF3E897-6FB7-4FBA-A93B-5B43CC7F8BC5}"
+>>>>>>> 91a242c697a17ec28830ebd6ed8f536b7f07d3e5
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +13,20 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{C9CBA3B8-21EC-44F3-93DF-A1A384C1D4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C9CBA3B8-21EC-44F3-93DF-A1A384C1D4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9CBA3B8-21EC-44F3-93DF-A1A384C1D4D2}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
 		{C9CBA3B8-21EC-44F3-93DF-A1A384C1D4D2}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{C9CBA3B8-21EC-44F3-93DF-A1A384C1D4D2}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{C9CBA3B8-21EC-44F3-93DF-A1A384C1D4D2}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+=======
+		{DAF3E897-6FB7-4FBA-A93B-5B43CC7F8BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF3E897-6FB7-4FBA-A93B-5B43CC7F8BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF3E897-6FB7-4FBA-A93B-5B43CC7F8BC5}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{DAF3E897-6FB7-4FBA-A93B-5B43CC7F8BC5}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{DAF3E897-6FB7-4FBA-A93B-5B43CC7F8BC5}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{DAF3E897-6FB7-4FBA-A93B-5B43CC7F8BC5}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+>>>>>>> 91a242c697a17ec28830ebd6ed8f536b7f07d3e5
 	EndGlobalSection
 EndGlobal

@@ -26,7 +26,7 @@ public partial class Lever : StaticBody2D
 		}
 		if(enabled)
 		{
-			Toggle(true)
+			Toggle(true);
 		}
 		
 	}

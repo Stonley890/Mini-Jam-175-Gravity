@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcv06muxc5krk"]
+[gd_scene load_steps=6 format=3 uid="uid://bcv06muxc5krk"]
 
+[ext_resource type="Script" path="res://scenes/objects/Box.cs" id="1_1fffv"]
 [ext_resource type="Texture2D" uid="uid://cpmgrgn7b18u2" path="res://sprites/Sprite Sheet.png" id="1_x6jtk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
@@ -9,7 +10,10 @@ size = Vector2(16, 16)
 atlas = ExtResource("1_x6jtk")
 region = Rect2(143.857, 0.0263157, 16.3041, 15.9947)
 
-[node name="Box" type="RigidBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8xnq"]
+
+[node name="Box" type="StaticBody2D"]
+script = ExtResource("1_1fffv")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")
@@ -17,3 +21,10 @@ shape = SubResource("RectangleShape2D_go20x")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = SubResource("AtlasTexture_v6141")
+
+[node name="pCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pCollision"]
+shape = SubResource("RectangleShape2D_f8xnq")
+
+[connection signal="body_entered" from="pCollision" to="." method="PlayerEnter"]

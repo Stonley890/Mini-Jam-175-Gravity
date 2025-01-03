@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Door : RigidBody2D
+public partial class Door : StaticBody2D
 {
 	[Export] bool open = false;
 	private AnimatedSprite2D _animatedSprite2D;
@@ -13,6 +13,11 @@ public partial class Door : RigidBody2D
 	{
 		closedCollisionLayer = GetCollisionLayer();
 		closedCollisionMask = GetCollisionMask();
+
+		if(open)
+		{
+			toggle(open);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

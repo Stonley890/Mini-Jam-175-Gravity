@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnbtt7qnc1kof"]
+[gd_scene load_steps=7 format=3 uid="uid://cnbtt7qnc1kof"]
 
+[ext_resource type="Script" path="res://scenes/objects/Door.cs" id="1_3xsbb"]
 [ext_resource type="Texture2D" uid="uid://cpmgrgn7b18u2" path="res://sprites/Sprite Sheet.png" id="2_s3dge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
@@ -29,6 +30,7 @@ animations = [{
 [node name="Door" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 5
+script = ExtResource("1_3xsbb")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_go20x")

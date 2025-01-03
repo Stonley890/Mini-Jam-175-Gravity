@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnbtt7qnc1kof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
+
+[node name="Door" type="Area2D"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_go20x")
+
+[node name="MeshInstance" type="MeshInstance2D" parent="."]

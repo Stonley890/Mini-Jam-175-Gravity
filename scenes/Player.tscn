@@ -15,13 +15,13 @@ region = Rect2(112, 128, 16, 16)
 atlas = ExtResource("2_2c8ol")
 region = Rect2(112, 144, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ho6m"]
-atlas = ExtResource("2_2c8ol")
-region = Rect2(112, 64, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cksx"]
 atlas = ExtResource("2_2c8ol")
 region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ho6m"]
+atlas = ExtResource("2_2c8ol")
+region = Rect2(112, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmr10"]
 atlas = ExtResource("2_2c8ol")
@@ -53,10 +53,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ho6m")
+"texture": SubResource("AtlasTexture_1cksx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1cksx")
+"texture": SubResource("AtlasTexture_2ho6m")
 }],
 "loop": true,
 "name": &"Idle",
@@ -82,7 +82,7 @@ atlas = ExtResource("2_2c8ol")
 region = Rect2(100.001, 10.7414, 8.81307, 6.47492)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy0um"]
-size = Vector2(7, 16)
+size = Vector2(6, 6)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -91,7 +91,7 @@ script = ExtResource("1_u8vxg")
 [node name="pSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gjj7u")
-animation = &"Back Run"
+animation = &"Idle"
 
 [node name="Shadow" type="Sprite2D" parent="pSprite"]
 z_index = -1
@@ -100,7 +100,7 @@ position = Vector2(0, 8)
 texture = SubResource("AtlasTexture_7unfs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_fy0um")
 
 [node name="Detect" type="Node2D" parent="."]

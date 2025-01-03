@@ -11,6 +11,7 @@ atlas = ExtResource("1_x6jtk")
 region = Rect2(143.857, 0.0263157, 16.3041, 15.9947)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8xnq"]
+size = Vector2(22, 22)
 
 [node name="Box" type="StaticBody2D"]
 script = ExtResource("1_1fffv")

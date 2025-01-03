@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://b5f61opfu0ekh"]
+[gd_scene load_steps=2 format=3 uid="uid://b5f61opfu0ekh"]
+
+[ext_resource type="Script" path="res://scenes/Main.cs" id="1_fiv2k"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_fiv2k")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 324.0
+offset_right = 640.0
+offset_bottom = 356.0
+text = "Play"
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 364.0
+offset_right = 640.0
+offset_bottom = 396.0
+text = "Settings"

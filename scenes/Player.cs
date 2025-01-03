@@ -4,12 +4,13 @@ using System;
 public partial class Player : CharacterBody2D
 { 
 	[Export] int speed = 200;
-	Vector2 velocity;
+	public Vector2 velocity;
     Node2D TileDetect;
     TileMapLayer tileMap;
     AnimatedSprite2D sprite;
     bool slide = false;
 
+    // Plays player animations bassed on velocity
     void playAnim()
     {
         if(velocity.X != 0  && velocity.Y == 0)
@@ -24,6 +25,7 @@ public partial class Player : CharacterBody2D
         else sprite.Play("Idle");
     }
 
+    // Detects if the player is on an ice tile
     void Detected()
     {   
         if(tileMap.GetCellAtlasCoords((Vector2I)tileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))

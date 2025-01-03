@@ -5,6 +5,7 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4d43"]
 texture = ExtResource("1_agrmr")
 0:0/0 = 0
+0:0/0/z_index = 10
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
 4:0/0 = 0
@@ -19,5 +20,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e4d43")
 
 [node name="tiles" type="TileMapLayer"]
+z_index = -2
 texture_filter = 1
 tile_set = SubResource("TileSet_no85m")

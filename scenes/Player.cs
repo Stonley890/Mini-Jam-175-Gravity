@@ -8,6 +8,8 @@ public partial class Player : CharacterBody2D
     Node2D TileDetect;
     TileMapLayer tileMap;
     AnimatedSprite2D sprite;
+    CollisionShape2D collisionShape;
+
     bool slide = false;
 
     // Plays player animations bassed on velocity
@@ -46,6 +48,7 @@ public partial class Player : CharacterBody2D
         tileMap = GetParent().GetNode<TileMapLayer>("tiles");
         TileDetect = GetNode<Node2D>("Detect");
         sprite = GetNode<AnimatedSprite2D>("pSprite");
+        collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 	}
 
 	// Called every frame.
@@ -56,4 +59,33 @@ public partial class Player : CharacterBody2D
         playAnim();
 		MoveAndCollide(velocity * (float)delta);
 	}
+
+    // Called when player presses enter
+    public override void _Input(InputEvent @event)
+    {
+        if(@event.IsActionPressed("interact"))
+        {
+            // Get all levers in the scene
+            Godot.Collections.Array<Godot.Node> nodes = GetParent().GetChildren();
+
+    		// Loop through all the levers
+            for(int i = 0; i < nodes.Count; i++)
+            {
+                // Get the lever
+                Node node = nodes[i];
+
+                // Check if it is a lever scene
+                if(node is Lever lever)
+                {
+                    // check if player is colliding with the lever
+                    if(lever.GetActivationArea().OverlapsBody(this))
+                    {
+                        lever.Toggle(!lever.GetEnabled());
+                    }
+                }
+                
+            }
+            
+        }
+    }
 }

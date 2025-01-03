@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dub2r0ge1cjny"]
+[gd_scene load_steps=14 format=3 uid="uid://bq5g8ypwybkf6"]
 
 [ext_resource type="Script" path="res://scenes/Player.cs" id="1_u8vxg"]
 [ext_resource type="Texture2D" uid="uid://cpmgrgn7b18u2" path="res://sprites/Sprite Sheet.png" id="2_2c8ol"]
@@ -86,6 +86,7 @@ size = Vector2(6, 6)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
+collision_mask = 7
 script = ExtResource("1_u8vxg")
 
 [node name="pSprite" type="AnimatedSprite2D" parent="."]

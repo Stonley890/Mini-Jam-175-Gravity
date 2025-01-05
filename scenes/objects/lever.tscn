@@ -1,12 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7id0yhd0wfp6"]
+[gd_scene load_steps=8 format=3 uid="uid://b7id0yhd0wfp6"]
 
 [ext_resource type="Script" path="res://scenes/objects/Lever.cs" id="1_gsfhb"]
+[ext_resource type="Texture2D" uid="uid://cpmgrgn7b18u2" path="res://sprites/Sprite Sheet.png" id="1_trpf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fxs8h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oihow"]
+atlas = ExtResource("1_trpf2")
+region = Rect2(0, 80, 16, 16)
 
-[node name="Lever" type="RigidBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbon0"]
+atlas = ExtResource("1_trpf2")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxs8h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oihow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbon0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b025b"]
+size = Vector2(24, 24)
+
+[node name="Lever" type="StaticBody2D" groups=["levers"]]
 collision_layer = 2
 script = ExtResource("1_gsfhb")
 
@@ -14,4 +38,11 @@ script = ExtResource("1_gsfhb")
 shape = SubResource("RectangleShape2D_go20x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fxs8h")
+
+[node name="ActivationArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]
+shape = SubResource("RectangleShape2D_b025b")

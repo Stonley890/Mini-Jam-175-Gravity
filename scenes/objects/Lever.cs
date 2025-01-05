@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Lever : RigidBody2D
+public partial class Lever : StaticBody2D
 {
 
 	// whether the lever is enabled. controlled via toggle(bool state)
@@ -14,10 +14,21 @@ public partial class Lever : RigidBody2D
 	public delegate void LeverStateChangedEventHandler(bool state, int controlGroup);
 
 	private AnimatedSprite2D _animatedSprite2D;
+	
+	private Area2D activationArea;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (GetNode("ActivationArea") is Area2D area2D)
+		{
+			activationArea = area2D;
+		}
+		if(enabled)
+		{
+			Toggle(true);
+		}
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,6 +52,12 @@ public partial class Lever : RigidBody2D
 		EmitSignal(SignalName.LeverStateChanged, enabled, controlGroup);
 	}
 
+	// Get the state of the lever
+	public bool GetEnabled()
+	{
+		return enabled;
+	}
+
 	// TODO: I'm not actually sure if this will work across multiple levers in a stage.
 	// This may need more work.
 	private void OnLeverStateChanged(bool state, int controlGroup)
@@ -49,5 +66,10 @@ public partial class Lever : RigidBody2D
 		{
 			this.enabled = state;
 		}
+	}
+
+	public Area2D GetActivationArea()
+	{
+		return activationArea;
 	}
 }

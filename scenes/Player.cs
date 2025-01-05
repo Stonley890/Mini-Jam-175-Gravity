@@ -6,8 +6,11 @@ public partial class Player : CharacterBody2D
 	[Export] int speed = 200;
 	public Vector2 velocity;
     Node2D TileDetect;
-    TileMapLayer tileMap;
+    TileMapLayer floorTileMap;
+    TileMapLayer ceilingTileMap;
     AnimatedSprite2D sprite;
+    CollisionShape2D collisionShape;
+
     bool slide = false;
 
     // Plays player animations bassed on velocity
@@ -28,7 +31,7 @@ public partial class Player : CharacterBody2D
     // Detects if the player is on an ice tile
     void Detected()
     {   
-        if(tileMap.GetCellAtlasCoords((Vector2I)tileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))
+        if(floorTileMap.GetCellAtlasCoords((Vector2I)floorTileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))
             slide = true;
         else slide = false;
     }
@@ -43,9 +46,11 @@ public partial class Player : CharacterBody2D
 	// Called on run
 	public override void _Ready()
 	{
-        tileMap = GetParent().GetNode<TileMapLayer>("tiles");
+        floorTileMap = GetParent().GetNode<TileMapLayer>("Floor");
+        ceilingTileMap = GetParent().GetNode<TileMapLayer>("Ceiling");
         TileDetect = GetNode<Node2D>("Detect");
         sprite = GetNode<AnimatedSprite2D>("pSprite");
+        collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 	}
 
 	// Called every frame.
@@ -56,4 +61,33 @@ public partial class Player : CharacterBody2D
         playAnim();
 		MoveAndCollide(velocity * (float)delta);
 	}
+
+    // Called when player presses enter
+    public override void _Input(InputEvent @event)
+    {
+        if(@event.IsActionPressed("interact"))
+        {
+            // Get all levers in the scene
+            Godot.Collections.Array<Godot.Node> nodes = GetParent().GetChildren();
+
+    		// Loop through all the levers
+            for(int i = 0; i < nodes.Count; i++)
+            {
+                // Get the lever
+                Node node = nodes[i];
+
+                // Check if it is a lever scene
+                if(node is Lever lever)
+                {
+                    // check if player is colliding with the lever
+                    if(lever.GetActivationArea().OverlapsBody(this))
+                    {
+                        lever.Toggle(!lever.GetEnabled());
+                    }
+                }
+                
+            }
+            
+        }
+    }
 }

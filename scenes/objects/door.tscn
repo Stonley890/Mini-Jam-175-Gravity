@@ -1,12 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnbtt7qnc1kof"]
+[gd_scene load_steps=7 format=3 uid="uid://cnbtt7qnc1kof"]
 
 [ext_resource type="Script" path="res://scenes/objects/Door.cs" id="1_3xsbb"]
+[ext_resource type="Texture2D" uid="uid://cpmgrgn7b18u2" path="res://sprites/Sprite Sheet.png" id="2_s3dge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go20x"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_j0y1x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpodl"]
+atlas = ExtResource("2_s3dge")
+region = Rect2(0, 96, 16, 16)
 
-[node name="Door" type="RigidBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu4g1"]
+atlas = ExtResource("2_s3dge")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0y1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpodl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu4g1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Door" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_3xsbb")
@@ -15,4 +36,5 @@ script = ExtResource("1_3xsbb")
 shape = SubResource("RectangleShape2D_go20x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_j0y1x")

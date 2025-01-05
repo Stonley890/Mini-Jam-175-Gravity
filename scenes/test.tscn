@@ -23,20 +23,11 @@ use_kinematic_bodies = true
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="Box" parent="Objects" instance=ExtResource("1_o81o0")]
-position = Vector2(200, 184)
-
-[node name="Box2" parent="Objects" instance=ExtResource("1_o81o0")]
-position = Vector2(142, 196)
-
-[node name="Box3" parent="Objects" instance=ExtResource("1_o81o0")]
-position = Vector2(189, 219)
-
-[node name="Lever" parent="." instance=ExtResource("4_jehwo")]
-position = Vector2(325, 95)
-
-[node name="Door" parent="." instance=ExtResource("5_yavij")]
+[node name="Door" parent="Objects" instance=ExtResource("5_yavij")]
 position = Vector2(40, 184)
 
-[node name="Lever2" parent="." instance=ExtResource("4_jehwo")]
-position = Vector2(288, 94)
+[node name="Lever" parent="Objects" instance=ExtResource("4_jehwo")]
+position = Vector2(140, 165)
+
+[node name="Box" parent="Objects" instance=ExtResource("1_o81o0")]
+position = Vector2(200, 184)

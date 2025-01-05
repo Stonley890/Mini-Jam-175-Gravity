@@ -37,7 +37,7 @@ public partial class Player : CharacterBody2D
         else slide = false;
     }
 
-	// Get the input from the player
+	// Get the input from the player for movement
 	private void GetInput()
 	{
         if(!slide)
@@ -79,11 +79,12 @@ public partial class Player : CharacterBody2D
                 ceilingTileMap.Enabled = true;
             }
             swapped = !swapped;
+            GD.Print("Swapped Gravity");
         }
         if(@event.IsActionPressed("interact"))
         {
             // Get all levers in the scene
-            Godot.Collections.Array<Godot.Node> nodes = GetParent().GetChildren();
+            Godot.Collections.Array<Godot.Node> nodes = GetParent().GetNode("Objects").GetChildren();
 
     		// Loop through all the levers
             for(int i = 0; i < nodes.Count; i++)

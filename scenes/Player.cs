@@ -12,6 +12,7 @@ public partial class Player : CharacterBody2D
     CollisionShape2D collisionShape;
 
     bool slide = false;
+    bool swapped = false;
 
     // Plays player animations bassed on velocity
     void playAnim()
@@ -31,7 +32,7 @@ public partial class Player : CharacterBody2D
     // Detects if the player is on an ice tile
     void Detected()
     {   
-        if(floorTileMap.GetCellAtlasCoords((Vector2I)floorTileMap.LocalToMap(TileDetect.GlobalPosition)) == new  Vector2I(0,2))
+        if(floorTileMap.GetCellAtlasCoords((Vector2I)floorTileMap.LocalToMap(TileDetect.GlobalPosition)) == new Vector2I(0,2) && !swapped || ceilingTileMap.GetCellAtlasCoords((Vector2I)ceilingTileMap.LocalToMap(TileDetect.GlobalPosition)) == new Vector2I(0,2) && swapped)
             slide = true;
         else slide = false;
     }
@@ -40,7 +41,7 @@ public partial class Player : CharacterBody2D
 	private void GetInput()
 	{
         if(!slide)
-		    velocity = Input.GetVector("ui_left", "ui_right","ui_up","ui_down") * speed;
+		    velocity = Input.GetVector("ui_left", "ui_right","ui_up","ui_down") * speed;       
 	}
 
 	// Called on run
@@ -62,9 +63,23 @@ public partial class Player : CharacterBody2D
 		MoveAndCollide(velocity * (float)delta);
 	}
 
-    // Called when player presses enter
+    // collects player input
     public override void _Input(InputEvent @event)
     {
+        // Switches between floor and ceiling tilemaps when player presses space
+        if(@event.IsActionPressed("swapGravity"))
+        {
+            if(swapped)
+            {
+                floorTileMap.Enabled = true;
+                ceilingTileMap.Enabled = false;
+            }
+            else {
+                floorTileMap.Enabled = false;
+                ceilingTileMap.Enabled = true;
+            }
+            swapped = !swapped;
+        }
         if(@event.IsActionPressed("interact"))
         {
             // Get all levers in the scene

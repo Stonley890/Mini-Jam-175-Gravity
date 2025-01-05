@@ -7,9 +7,10 @@ public partial class Box : StaticBody2D
 	float Maxspeed = 250;
 
 	// Allows player to interact with the box through the use of an area2d
-	public void PlayerEnter(Player p)
+	public void PlayerEnter(PhysicsBody2D p)
 	{
-		velocity += p.velocity.Normalized() * Maxspeed;
+		if(p is Player a)
+			velocity += a.velocity.Normalized() * Maxspeed;
 	}
 
 	// Called when the node enters the scene tree for the first time.

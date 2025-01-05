@@ -3,7 +3,7 @@ using System;
 
 public partial class Door : StaticBody2D
 {
-	[Export] bool open = false;
+	[Export] bool open;
 	private AnimatedSprite2D _animatedSprite2D;
 	private uint closedCollisionLayer;
 	private uint closedCollisionMask;
@@ -14,25 +14,51 @@ public partial class Door : StaticBody2D
 		closedCollisionLayer = GetCollisionLayer();
 		closedCollisionMask = GetCollisionMask();
 
-		if(open)
-		{
-			toggle(open);
-		}
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(open)
+		{
+			toggle(open);
+		}
+		else toggle(open);
+		GetLever();
+		
+	}
+
+	public void GetLever()
+	{
+		 Godot.Collections.Array<Godot.Node> nodes = GetParent().GetChildren();
+
+    		// Loop through all the levers
+            for(int i = 0; i < nodes.Count; i++)
+            {
+                // Get the lever
+                Node node = nodes[i];
+
+                // Check if it is a lever scene
+                if(node is Lever lever)
+                {
+                    if(lever.GetEnabled() == true)
+					{
+						open = true;
+					}
+					else open = false;
+                }
+                
+            }
 	}
 
 	// Toggle door open or closed
 	public void toggle(bool state)
 	{
-		open = state;
 		// Get AnimatedSprite2D
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		var frame = 0;
-		if (open)
+		if (state)
 		{
 			// An open door should no longer act like a wall
 			SetCollisionLayer(0);
